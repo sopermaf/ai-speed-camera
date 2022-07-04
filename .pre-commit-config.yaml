@@ -1,28 +1,71 @@
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.2.0
+  - repo: local
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-json
-    -   id: check-toml
-    -   id: check-added-large-files
--   repo: https://github.com/asottile/pyupgrade
-    rev: v2.34.0
+      - id: black
+        name: black
+        entry: black
+        language: system
+        types: [python]
+        require_serial: true
+      - id: check-added-large-files
+        name: Check for added large files
+        entry: check-added-large-files
+        language: system
+      - id: check-toml
+        name: Check Toml
+        entry: check-toml
+        language: system
+        types: [toml]
+      - id: check-json
+        name: Check Json
+        entry: check-json
+        language: system
+        types: [json]
+      - id: check-yaml
+        name: Check Yaml
+        entry: check-yaml
+        language: system
+        types: [yaml]
+      - id: darglint
+        name: darglint
+        entry: darglint
+        language: system
+        types: [python]
+        stages: [manual]
+      - id: end-of-file-fixer
+        name: Fix End of Files
+        entry: end-of-file-fixer
+        language: system
+        types: [text]
+        stages: [commit, push, manual]
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: system
+        types: [python]
+        require_serial: true
+        args: [--darglint-ignore-regex, .*]
+      - id: isort
+        name: isort
+        entry: isort
+        require_serial: true
+        language: system
+        types_or: [cython, pyi, python]
+        args: ["--filter-files"]
+      - id: pyupgrade
+        name: pyupgrade
+        description: Automatically upgrade syntax for newer versions.
+        entry: pyupgrade
+        language: system
+        types: [python]
+        args: [--py37-plus]
+      - id: trailing-whitespace
+        name: Trim Trailing Whitespace
+        entry: trailing-whitespace-fixer
+        language: system
+        types: [text]
+        stages: [commit, push, manual]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.6.0
     hooks:
-    -   id: pyupgrade
--   repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.10.1
-    hooks:
-    -   id: isort
--   repo: https://github.com/psf/black
-    rev: '22.3.0'
-    hooks:
-    -   id: black
--   repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
-    hooks:
-    -   id: flake8
+      - id: prettier

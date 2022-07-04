@@ -1,3 +1,12 @@
-__pycache__
+__pycache__/
 *.mp4
 *.json
+.mypy_cache/
+/.coverage
+/.coverage.*
+/.nox/
+/.python-version
+/.pytype/
+/dist/
+/docs/_build/
+/src/*.egg-info/
