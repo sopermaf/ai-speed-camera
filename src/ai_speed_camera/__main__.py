@@ -1,11 +1,13 @@
 """Command-line interface."""
-import click
 import csv
 import json
 import logging
 
+import click
+
 from .annotations_processor import extract_cars
 from .video import annotate_frames
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -13,15 +15,51 @@ logging.basicConfig(level=logging.INFO)
 @click.command()
 @click.option("--video", help="the video file to process", type=click.File("r"))
 @click.option("--output", help="the processed output video file")
-@click.option("--annotations",help="annotation response JSON file from Google Cloud Video API",required=True,type=click.File("r"))
-@click.option("--distance",help="horizontal distance (metres) captured by video",required=True,type=int,)
+@click.option(
+    "--annotations",
+    help="annotation response JSON file from Google Cloud Video API",
+    required=True,
+    type=click.File("r"),
+)
+@click.option(
+    "--distance",
+    help="horizontal distance (metres) captured by video",
+    required=True,
+    type=int,
+)
 @click.option("--frame-rate", help="frame rate for video file", type=int, default=15)
 @click.option("--width", help="width for input video file", type=int, default=1920)
 @click.option("--height", help="heightfor input video file", type=int, default=1080)
-@click.option("--min-speed",help="ignore cars travelling slower than threshold (kmph)",type=int,default=1,)
-@click.option("--min-distance",help="ignore cars travelling  minimum relative distance across frame (0..1)",type=float,default=0,)
-@click.option("--export-to-csv", is_flag=True, default=False, help="export detected cars details to csv file")
-def main(video, output, annotations, distance, frame_rate, width, height, min_speed, min_distance, export_to_csv) -> None:
+@click.option(
+    "--min-speed",
+    help="ignore cars travelling slower than threshold (kmph)",
+    type=int,
+    default=1,
+)
+@click.option(
+    "--min-distance",
+    help="ignore cars travelling  minimum relative distance across frame (0..1)",
+    type=float,
+    default=0,
+)
+@click.option(
+    "--export-to-csv",
+    is_flag=True,
+    default=False,
+    help="export detected cars details to csv file",
+)
+def main(
+    video,
+    output,
+    annotations,
+    distance,
+    frame_rate,
+    width,
+    height,
+    min_speed,
+    min_distance,
+    export_to_csv,
+) -> None:
     """Ai Speed Camera."""
     print(video, output)
     results = json.loads(annotations.read())
@@ -56,6 +94,7 @@ def main(video, output, annotations, distance, frame_rate, width, height, min_sp
         logging.info(
             "Missing video and output parameters - skipping source video annotation."
         )
+
 
 if __name__ == "__main__":
     main(prog_name="ai-speed-camera")  # pragma: no cover

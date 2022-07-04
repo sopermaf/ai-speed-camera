@@ -1098,7 +1098,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": 6.252524e-05,
+                  "left": 6.252524e-5,
                   "top": 0.36819977,
                   "right": 0.22139494,
                   "bottom": 0.48675478
@@ -1625,7 +1625,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": 1.4603168e-05,
+                  "left": 1.4603168e-5,
                   "top": 0.56285685,
                   "right": 0.16208059,
                   "bottom": 0.8285977
@@ -1724,7 +1724,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": 7.5852455e-05,
+                  "left": 7.5852455e-5,
                   "top": 0.5634414,
                   "right": 0.15945666,
                   "bottom": 0.8393954
@@ -2390,7 +2390,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": -4.266509e-05,
+                  "left": -4.266509e-5,
                   "top": 0.5446103,
                   "right": 0.16615067,
                   "bottom": 0.82516444
@@ -2462,7 +2462,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": 8.297672e-05,
+                  "left": 8.297672e-5,
                   "top": 0.54750174,
                   "right": 0.16935077,
                   "bottom": 0.8169465
@@ -5647,7 +5647,7 @@
             "frames": [
               {
                 "normalizedBoundingBox": {
-                  "left": -6.5394424e-08,
+                  "left": -6.5394424e-8,
                   "top": 0.46343654,
                   "right": 0.18797727,
                   "bottom": 0.7398078
@@ -5656,7 +5656,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": -6.5394424e-08,
+                  "left": -6.5394424e-8,
                   "top": 0.46111467,
                   "right": 0.1843806,
                   "bottom": 0.7370413
@@ -5665,7 +5665,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": -2.7633243e-06,
+                  "left": -2.7633243e-6,
                   "top": 0.4611075,
                   "right": 0.18437272,
                   "bottom": 0.7370335
@@ -5674,7 +5674,7 @@
               },
               {
                 "normalizedBoundingBox": {
-                  "left": -7.2835544e-05,
+                  "left": -7.2835544e-5,
                   "top": 0.46110854,
                   "right": 0.18573357,
                   "bottom": 0.73703444

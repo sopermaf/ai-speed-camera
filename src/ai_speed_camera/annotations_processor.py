@@ -6,6 +6,7 @@ import re
 
 import numpy
 
+
 seconds = re.compile(r"\d+(\.\d+)?")
 
 

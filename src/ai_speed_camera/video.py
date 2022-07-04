@@ -5,6 +5,7 @@ from tqdm import tqdm
 
 from .annotations_processor import bb_centroid
 
+
 # Blue color in BGR
 color = (255, 0, 0)
 
