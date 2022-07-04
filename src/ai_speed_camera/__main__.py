@@ -5,8 +5,8 @@ import logging
 
 import click
 
-from .annotations_processor import extract_cars
-from .video import annotate_frames
+from ._annotations_processor import _extract_cars
+from ._video import _annotate_frames
 
 
 logging.basicConfig(level=logging.INFO)
@@ -63,7 +63,7 @@ def main(
     """Ai Speed Camera."""
     print(video, output)
     results = json.loads(annotations.read())
-    cars_frame_lookup = extract_cars(
+    cars_frame_lookup = _extract_cars(
         results, frame_rate, distance, min_speed, min_distance
     )
 
@@ -82,7 +82,7 @@ def main(
 
     if video is not None and output is not None:
         logging.info("Processing source video file")
-        annotate_frames(
+        _annotate_frames(
             cars_frame_lookup,
             video.name,
             output,

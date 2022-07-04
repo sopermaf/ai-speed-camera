@@ -3,7 +3,7 @@ import logging
 import cv2
 from tqdm import tqdm
 
-from .annotations_processor import bb_centroid
+from ._annotations_processor import _bb_centroid
 
 
 # Blue color in BGR
@@ -13,19 +13,19 @@ color = (255, 0, 0)
 thickness = 10
 
 
-def normalised_to_xy(x, y, width, height):
+def _normalised_to_xy(x, y, width, height):
     return int(x * width), int(y * height)
 
 
-def box_start(box, width, height):
-    return normalised_to_xy(box["left"], box["top"], width, height)
+def _box_start(box, width, height):
+    return _normalised_to_xy(box["left"], box["top"], width, height)
 
 
-def box_end(box, width, height):
-    return normalised_to_xy(box["right"], box["bottom"], width, height)
+def _box_end(box, width, height):
+    return _normalised_to_xy(box["right"], box["bottom"], width, height)
 
 
-def annotate_frames(
+def _annotate_frames(
     cars_frame_lookup, input_video, output_video, frame_rate, width, height
 ):
     src = cv2.VideoCapture(input_video)
@@ -49,22 +49,22 @@ def annotate_frames(
                 logging.debug("car #%s = %s", idx, car[frame_number])
                 frame = cv2.rectangle(
                     frame,
-                    box_start(car[frame_number], width, height),
-                    box_end(car[frame_number], width, height),
+                    _box_start(car[frame_number], width, height),
+                    _box_end(car[frame_number], width, height),
                     color,
                     thickness,
                 )
                 frame = cv2.putText(
                     frame,
                     "car " + str(idx) + " speed: " + str(car["car_speed"]) + "km/h",
-                    box_start(car[frame_number], width, height),
+                    _box_start(car[frame_number], width, height),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     2.0,
                     (0, 0, 0),
                     4,
                 )
-                centroid = bb_centroid(car[frame_number])
-                coords = normalised_to_xy(centroid[0], centroid[1], width, height)
+                centroid = _bb_centroid(car[frame_number])
+                coords = _normalised_to_xy(centroid[0], centroid[1], width, height)
                 frame = cv2.circle(
                     frame, coords, radius=10, color=(255, 255, 255), thickness=-1
                 )
